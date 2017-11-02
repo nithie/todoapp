@@ -1,0 +1,8 @@
+mat-card{
+    margin: 0.25em;
+}
+
+.edit-task{
+    position: fixed;
+    right: 5%;
+}

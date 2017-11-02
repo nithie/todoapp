@@ -1,0 +1,3 @@
+<div *ngFor = "let completedTask of completedTasks; let i:index">
+  <mat-card (click) = "remove(i)">{{completedTask}}</mat-card>
+</div>
