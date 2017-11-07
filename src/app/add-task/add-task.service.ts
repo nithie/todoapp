@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
-export class AddTaskService {  
+export class AddTaskService {
   private subject = new Subject<any>();
 
   addTask( task: string ) {
-    this.subject.next({ text: task });  
+    this.subject.next({ text: task });
   }
 
   getMessage(): Observable<any> {
@@ -15,3 +15,7 @@ export class AddTaskService {
   }
 
 }
+
+// import { Injectable } from '@angular/core';
+// import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/';
+

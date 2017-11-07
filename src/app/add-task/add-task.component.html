@@ -2,5 +2,5 @@
 <mat-form-field >
   <input matInput placeholder="New Task" formControlName='newTask'>
 </mat-form-field>
-<button mat-fab [disabled]="!addTaskForm.valid" (click) = "openSnackBar(addTaskForm.get('newTask').value)">+</button>
+<button mat-fab [disabled]="!addTaskForm.valid">+</button>
 </form>
