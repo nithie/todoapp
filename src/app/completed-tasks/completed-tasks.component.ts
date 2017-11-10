@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DisplayTaskService } from '../display-task/display-task.service';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -10,14 +9,9 @@ import { DisplayTaskService } from '../display-task/display-task.service';
 export class CompletedTasksComponent implements OnInit {
 
   completedTasks: string[] = [];
-  constructor(private displayTaskService:DisplayTaskService) {
-    this.displayTaskService.getCompletedTask().subscribe(data => this.completedTasks.unshift(data.text));
+  constructor() {
    }
 
   ngOnInit() {
-  }
-
-  remove(i) {
-    this.completedTasks.splice(i, 1);
   }
 }

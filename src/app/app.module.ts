@@ -19,11 +19,10 @@ import {
   MatTabsModule,
  } from '@angular/material';
 import 'hammerjs';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AddTaskService } from './add-task/add-task.service';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,8 +31,9 @@ import { DisplayTaskComponent } from './display-task/display-task.component';
 import { TabComponent } from './tab/tab.component';
 import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
 import { AddTaskFirebaseService } from './add-task/add-task-firebase.service';
-import { DisplayTaskService } from './display-task/display-task.service';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { HeaderComponent } from './header/header.component';
+import { SignInService } from './sign-in/sign-in.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAqMV-gyVrEjxYyFNY99Yuk7T0XMJ1QKYU',
@@ -51,7 +51,8 @@ export const firebaseConfig = {
     DisplayTaskComponent,
     TabComponent,
     CompletedTasksComponent,
-    SignInComponent
+    SignInComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -75,8 +76,10 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FlexLayoutModule,
+    AppRoutingModule,
     ],
-  providers: [AddTaskFirebaseService, DisplayTaskService, AddTaskService],
+  providers: [AddTaskFirebaseService, SignInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

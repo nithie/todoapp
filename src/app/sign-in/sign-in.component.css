@@ -1,0 +1,45 @@
+
+.title{
+    text-align: center;
+    background-color:  #08f;
+    color: #fff;
+    padding: 2%;
+    margin: 0px;
+}
+
+.login-button{
+    color: #e26b09;
+    border: 1px solid #888888;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+.login-button:hover{
+    color: #fff;
+    background-color: #e26b09;
+    border: 0px;
+}
+
+@media only screen and (min-width: 600px) {
+    .login-button{
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        font-size: 20px;
+    }
+    }
+
+@media only screen and (max-width: 599px) {
+.login-button{
+    margin-top: 50%;
+    margin-left: 35%;
+    margin-bottom: 20%;
+    
+}
+}
+
+.copywrite{
+    color: black;
+    position: fixed;
+    bottom: 10px;
+}
