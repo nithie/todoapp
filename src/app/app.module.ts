@@ -30,7 +30,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { DisplayTaskComponent } from './display-task/display-task.component';
 import { TabComponent } from './tab/tab.component';
 import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
-import { AddTaskFirebaseService } from './add-task/add-task-firebase.service';
+import { AddTaskFirebaseService } from './services/add-task-firebase.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HeaderComponent } from './header/header.component';
 import { SignInService } from './sign-in/sign-in.service';

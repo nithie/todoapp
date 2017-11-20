@@ -1,5 +1,3 @@
-<div *ngFor = "let task of tasks; let i = index">
-  <mat-card (click) = "remove(i)">{{task}}
-  <span class="edit-task"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-</mat-card>
+<div *ngFor = "let task of tasks; let i = index" >
+  <mat-card (click)="finish(task.task)">{{task.task}}{{task.createdAt}}</mat-card>
 </div>

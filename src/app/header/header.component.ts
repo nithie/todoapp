@@ -16,9 +16,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(public signin: SignInService ) {
   this.signin.afAuth.authState.subscribe( (data) => {
+    if (data.photoURL !== null) {
     this.profileURL = data.photoURL;
+    }
     this.name = data.photoURL;
-    this.isLoggedIn = true;
   });
 }
 
