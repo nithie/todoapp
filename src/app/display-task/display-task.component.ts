@@ -21,8 +21,7 @@ export class DisplayTaskComponent implements OnInit {
           this.router.navigate(['signin']);
         } else {
           this.uid = auth.uid;
-          this.addTaskService.getTask(this.uid).subscribe((data) => {
-            console.log(data);
+          this.addTaskService.getUnCompletedTask(this.uid).subscribe((data) => {
             this.tasks = data;
           });
         }

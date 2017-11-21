@@ -1,6 +1,7 @@
 import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
+import { Task } from './task';
 
 @Injectable()
 export class AddTaskFirebaseService {
@@ -15,9 +16,26 @@ export class AddTaskFirebaseService {
         listRef.update(task.task, task);
     }
 
-    getTask(uid) {
+    getCompletedTask(uid): Observable<Task[]> {
         const listRef = this.db.list(uid);
-        return listRef.valueChanges();
+        return listRef.valueChanges().map((data: Task[]) => {
+            return data.filter((tasking: Task) => {
+                    if (tasking.completed === true) {
+                        return tasking;
+                    }
+            });
+        });
+    }
+
+    getUnCompletedTask(uid): Observable<Task[]> {
+        const listRef = this.db.list(uid);
+        return listRef.valueChanges().map((data: Task[]) => {
+            return data.filter((tasking: Task) => {
+                    if (tasking.completed === false) {
+                        return tasking;
+                    }
+            });
+        });
     }
 
     updateTask(uid, task) {
