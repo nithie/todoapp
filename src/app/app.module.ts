@@ -34,6 +34,8 @@ import { AddTaskFirebaseService } from './services/add-task-firebase.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HeaderComponent } from './header/header.component';
 import { SignInService } from './sign-in/sign-in.service';
+import { TimerComponent } from './timer/timer.component';
+import { GetTimeToLapseService } from './services/get-time-to-lapse.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAqMV-gyVrEjxYyFNY99Yuk7T0XMJ1QKYU',
@@ -52,7 +54,8 @@ export const firebaseConfig = {
     TabComponent,
     CompletedTasksComponent,
     SignInComponent,
-    HeaderComponent
+    HeaderComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,7 @@ export const firebaseConfig = {
     FlexLayoutModule,
     AppRoutingModule,
     ],
-  providers: [AddTaskFirebaseService, SignInService],
+  providers: [AddTaskFirebaseService, SignInService, GetTimeToLapseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

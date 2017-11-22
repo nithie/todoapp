@@ -13,7 +13,7 @@ export class AddTaskFirebaseService {
 
     addTask(task, uid) {
         const listRef = this.db.list(uid);
-        listRef.update(task.task, task);
+        return listRef.update(task.task, task);
     }
 
     getCompletedTask(uid): Observable<Task[]> {

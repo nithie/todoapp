@@ -5,11 +5,13 @@ import { Router } from '@angular/router';
 
 import { AddTaskFirebaseService } from '../services/add-task-firebase.service';
 import { SignInService } from '../sign-in/sign-in.service';
+import { SetDueDateService } from '../services/set-due-date.service';
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.css']
+  styleUrls: ['./add-task.component.css'],
+  providers: [SetDueDateService],
 })
 export class AddTaskComponent implements OnInit {
 
@@ -17,7 +19,7 @@ export class AddTaskComponent implements OnInit {
   uid;
 
   constructor(private addTaskService: AddTaskFirebaseService, public snackBar: MatSnackBar,
-    public authService: SignInService, private router: Router ) {
+    public authService: SignInService, private router: Router, private dueDate: SetDueDateService ) {
       this.authService.afAuth.authState.subscribe((auth) => {
         if (auth == null) {
           this.router.navigate(['signin']);
@@ -34,11 +36,12 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  onSubmit() {
     this.addTaskService.addTask({
       task : this.addTaskForm.value.newTask,
       createdAt : Date.now(),
       completed: false,
+      dueDate: this.dueDate.setDueDate().toString(),
     }, this.uid );
   }
 }

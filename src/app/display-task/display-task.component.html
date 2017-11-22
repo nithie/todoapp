@@ -1,3 +1,4 @@
 <div *ngFor = "let task of tasks; let i = index" >
-  <mat-card (click)="finish(task.task)">{{task.task}}{{task.createdAt}}</mat-card>
+  <mat-card (click)="finish(task.task)">{{task.task}}<span class="due-date">{{task.dueDate | date}}
+    <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></span></mat-card>
 </div>
