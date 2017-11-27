@@ -7,6 +7,7 @@ import { SignInService } from '../sign-in/sign-in.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Task } from '../services/task';
 import { GetTimeToLapseService } from '../services/get-time-to-lapse.service';
+import { COMPILER_OPTIONS } from '@angular/core/src/linker/compiler';
 
 @Component({
   selector: 'app-display-task',
@@ -17,6 +18,7 @@ export class DisplayTaskComponent implements OnInit {
 
   tasks: Task[]  = [];
   uid;
+  track;
 
   constructor(private addTaskService: AddTaskFirebaseService, public authService: SignInService, private router: Router,
   private getTimeToLapseService: GetTimeToLapseService ) {
@@ -27,10 +29,17 @@ export class DisplayTaskComponent implements OnInit {
           this.uid = auth.uid;
           this.addTaskService.getUnCompletedTask(this.uid).subscribe((data) => {
             this.tasks = data;
-            setInterval(this.tasks.forEach( (task) => {
-              console.log('logging');
+            this.tasks.forEach( (task) => {
               const remaining = this.getTimeToLapseService.timeToLapse(task.dueDate);
-            }), 1000);
+              console.log(remaining);
+              if ( remaining > 0 ) {
+                this.track = 'red';
+              } else if ( remaining > -3 ) {
+                this.track = 'orange';
+              } else {
+                this.track = 'green';
+              }
+            });
           });
         }
     });
@@ -40,8 +49,7 @@ export class DisplayTaskComponent implements OnInit {
 }
 
   ngOnInit() {
-    
-    //  setInterval( () => console.log('Logfging'), 1000 );
+
   }
 
   finish(task) {

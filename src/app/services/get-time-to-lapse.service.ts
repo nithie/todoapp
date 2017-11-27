@@ -6,7 +6,9 @@ export class GetTimeToLapseService {
 
   constructor() { }
 
-  timeToLapse(data): any {
-    console.log(data);
+  timeToLapse(data): number {
+    const date = new Date(data);
+    const days = moment.duration ( Date.now() - date.getTime(), 'milliseconds');
+    return  (days.days() * 24 + days.hours());
   }
 }
